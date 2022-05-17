@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import AdminAuth from "./components/AdminAuth.jsx";
-import Footer from "./layouts/footer.jsx";
 
+import Footer from "./layouts/footer.jsx";
+import AdminAuth from "./components/AdminAuth.jsx";
 import Home from "./components/home.jsx";
 import LogIn from "./components/login.jsx";
-
 import NavBar from "./layouts/navBar.jsx";
 import SignUp from "./components/signUp.jsx";
 import axios from "axios";
@@ -38,5 +37,3 @@ const App = () => {
   );
 };
 export default App;
-
-// ReactDOM.render(<App />, document.getElementById("app"));

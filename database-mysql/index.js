@@ -35,4 +35,4 @@ let createUser = () => {
     .catch((error) => console.log(error));
 };
 
-module.exports = { connection, adminLogIn };
+module.exports = { connection, adminLogIn, createUser };

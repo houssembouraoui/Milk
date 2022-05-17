@@ -1,6 +1,22 @@
+import axios from "axios";
 import React from "react";
 
 const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [data, setData] = useState({});
+  const [pass, setPass] = useState(true);
+  const [url, setUrl] = useState({});
+
+
+  let addUser = () => {
+    axios.post("http://localhost:5000/new/user", {
+      email,
+      password,
+      url
+    });
+  };
+
   return (
     <section className="vh-100">
       <div className="container h-100">

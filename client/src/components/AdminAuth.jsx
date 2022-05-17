@@ -6,6 +6,8 @@ const AdminAuth = (props) => {
   const [password, setPassword] = useState("");
   const [data, setData] = useState({});
   const [pass, setPass] = useState(true);
+
+  
   useEffect(() => {
     axios.get("http://localhost:5000/admin/login").then((response) => {
       setData(response.data);

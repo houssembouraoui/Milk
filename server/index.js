@@ -18,11 +18,8 @@ app.get("/admin/login", (request, response) => {
   });
 });
 
-app.get("/admin", (req, res) => {
-  res.send({
-    username: "noura",
-    password: "f3e5fg84w3b21wh543g5n13f3h7j3gdcwxf3h57f",
-  });
+app.post("/new/user", (req, res) => {
+  connection.createUser();
 });
 
 app.listen(port, () => {
