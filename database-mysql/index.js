@@ -26,4 +26,13 @@ let adminLogIn = () => {
     .catch((error) => console.log(error));
 };
 
+let createUser = () => {
+  return db
+    .queryAsync(`insert into user${req.body}`)
+    .then((response) => {
+      return response[0];
+    })
+    .catch((error) => console.log(error));
+};
+
 module.exports = { connection, adminLogIn };

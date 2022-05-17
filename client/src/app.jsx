@@ -4,7 +4,6 @@ import Footer from "./layouts/footer.jsx";
 
 import Home from "./components/home.jsx";
 import LogIn from "./components/login.jsx";
-import Try from "./components/login.jsx";
 
 import NavBar from "./layouts/navBar.jsx";
 import SignUp from "./components/signUp.jsx";
@@ -17,7 +16,6 @@ const App = () => {
 
   let changeView = (view) => {
     setView(view);
-    // console.log(view);
   };
 
   return (
