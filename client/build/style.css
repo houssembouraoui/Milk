@@ -1,0 +1,59 @@
+body {
+  background-size: cover;
+  background-color: #361574;
+}
+.blogs {
+  text-align: center;
+  border: 4px;
+  border-radius: 1pc;
+  background-color: rgb(172, 192, 235);
+  margin-bottom: 8px;
+  margin-top: 8px;
+  margin-left: 324px;
+  margin-right: 324px;
+  padding: 1px;
+  border-width: 24px;
+  list-style-type: none;
+}
+.date {
+  text-align: right;
+  padding-right: 12px;
+}
+.author {
+  text-align: left;
+  padding-left: 12px;
+}
+.author:hover {
+  background-size: 100% 2px;
+  text-shadow: 0 2.5px 4px rgba(0, 0, 0, 0.5);
+}
+
+#title {
+  width: 220px;
+  height: 28px;
+  border-radius: 4px;
+  margin: 8px;
+}
+
+#author {
+  width: 220px;
+  height: 28px;
+  border-radius: 4px;
+  margin: 8px;
+}
+
+#body {
+  width: 480px;
+  height: 140px;
+  margin-left: 8px;
+}
+
+#submit {
+  overflow: hidden;
+}
+
+#bouton {
+  background-color: rgb(197, 23, 23);
+  margin-left: 980px;
+  margin-bottom: 10px;
+}
