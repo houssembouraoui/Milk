@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -8,12 +8,11 @@ const SignUp = () => {
   const [pass, setPass] = useState(true);
   const [url, setUrl] = useState({});
 
-
   let addUser = () => {
     axios.post("http://localhost:5000/new/user", {
       email,
       password,
-      url
+      url,
     });
   };
 
