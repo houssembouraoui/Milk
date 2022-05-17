@@ -27,9 +27,7 @@ function AdminNav(props) {
                 placeholder="Search"
                 style={{ "min-width": "125px" }}
               />
-              <span className="input-group-text border-0 d-none d-lg-flex">
-                
-              </span>
+              <span className="input-group-text border-0 d-none d-lg-flex"></span>
             </form>
           </div>
 
