@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 
 function NavBar(props) {
-  console.log(props);
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -12,7 +11,11 @@ function NavBar(props) {
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 p-2">
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a
+                  className="nav-link"
+                  href="#"
+                  onClick={() => props.changeView("home")}
+                >
                   Dashboard
                 </a>
               </li>

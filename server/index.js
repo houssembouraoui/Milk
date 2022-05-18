@@ -25,6 +25,13 @@ app.post("/new/user", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+app.post("add/admin", (req, res) => {
+  connection
+    .addAdmin()
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+});
+
 app.listen(port, () => {
   console.log(`app listening at http://localhost:${port}`);
 });

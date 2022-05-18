@@ -2,7 +2,7 @@ import React from "react";
 
 const LogIn = (props) => {
   return (
-    <div classNameName="create">
+    <div className="create">
       <section className="vh-100">
         <div className="container-fluid h-custom">
           <div className="row d-flex justify-content-center align-items-center h-100">

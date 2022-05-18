@@ -1,4 +1,5 @@
 import axios from "axios";
+import emailjs, { EmailJSResponseStatus } from "emailjs-com";
 import React, { useEffect, useState } from "react";
 
 const AddUser = (props) => {
@@ -9,8 +10,6 @@ const AddUser = (props) => {
   const [phone, setPone] = useState({});
   const [role, setRole] = useState("");
   const [newUser, setNewUser] = useState();
-
-  // console.log("el rolo del ", role + "é");
 
   let addUser = () => {
     console.log({ name, email, photo, phone, role });

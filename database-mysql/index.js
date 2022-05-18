@@ -26,14 +26,23 @@ let adminLogIn = () => {
     .catch((error) => console.log(error));
 };
 
+let addAdmin = () => {
+  return db
+    .queryAsync(
+      `INSERT INTO admin (firstname, lastname, email, password) VALUES ('noura', 'noura', 'noura@gmail.com', 'azerty')`
+    )
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+};
+
 let createUser = (req, res) => {
   console.log(req.body);
   return db
     .queryAsync(
-      `INSERT INTO ${req.body.role} (firstname, lastname, email, image, phonenumber, adress) VALUES ('${req.body.name}', '${req.body.last}', '${req.body.email}', '${req.body.photo}', '${req.body.phone}', ${req.body.adress})`
+      `INSERT INTO ${req.body.role} (firstname, lastname, email, image, phonenumber, adress) VALUES ('${req.body.name}', '${req.body.last}', '${req.body.email}', '${req.body.photo}', ${req.body.phone}, '${req.body.adress}')`
     )
     .then((res) => console.log(res, "user created"))
     .catch((err) => console.log(err));
 };
 
-module.exports = { connection, adminLogIn, createUser };
+module.exports = { connection, adminLogIn, createUser, addAdmin };
