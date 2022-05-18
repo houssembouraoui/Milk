@@ -1,18 +1,27 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const SignUp = () => {
+const AddUser = (props) => {
+  const [name, setName] = useState("");
+  const [last, setLast] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [data, setData] = useState({});
-  const [pass, setPass] = useState(true);
-  const [url, setUrl] = useState({});
+  const [photo, setPhoto] = useState({});
+  const [phone, setPone] = useState({});
+  const [role, setRole] = useState("");
+  const [newUser, setNewUser] = useState();
+
+  // console.log("el rolo del ", role + "é");
 
   let addUser = () => {
+    console.log({ name, email, photo, phone, role });
     axios.post("http://localhost:5000/new/user", {
+      name,
+      last,
       email,
-      password,
-      url,
+      photo,
+      phone,
+      role,
+      adress: "adress",
     });
   };
 
@@ -37,12 +46,31 @@ const SignUp = () => {
                             type="text"
                             id="form3Example1c"
                             className="form-control"
+                            onChange={(e) => setName(e.target.value)}
                           />
                           <label
                             className="form-label"
                             htmlFor="form3Example1c"
                           >
-                            Your Name
+                            First Name
+                          </label>
+                        </div>
+                      </div>
+
+                      <div className="d-flex flex-row align-items-center mb-4">
+                        <i className="fas fa-user fa-lg me-3 fa-fw"></i>
+                        <div className="form-outline flex-fill mb-0">
+                          <input
+                            type="text"
+                            id="form3Example1c"
+                            className="form-control"
+                            onChange={(e) => setLast(e.target.value)}
+                          />
+                          <label
+                            className="form-label"
+                            htmlFor="form3Example1c"
+                          >
+                            Last Name
                           </label>
                         </div>
                       </div>
@@ -54,12 +82,31 @@ const SignUp = () => {
                             type="email"
                             id="form3Example3c"
                             className="form-control"
+                            onChange={(e) => setEmail(e.target.value)}
                           />
                           <label
                             className="form-label"
                             htmlFor="form3Example3c"
                           >
-                            Your Email
+                            Email
+                          </label>
+                        </div>
+                      </div>
+
+                      <div className="d-flex flex-row align-items-center mb-4">
+                        <i className="fas fa-user fa-lg me-3 fa-fw"></i>
+                        <div className="form-outline flex-fill mb-0">
+                          <input
+                            type="text"
+                            id="form3Example1c"
+                            className="form-control"
+                            onChange={(e) => setPhoto(e.target.value)}
+                          />
+                          <label
+                            className="form-label"
+                            htmlFor="form3Example1c"
+                          >
+                            Photo
                           </label>
                         </div>
                       </div>
@@ -68,15 +115,16 @@ const SignUp = () => {
                         <i className="fas fa-lock fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0">
                           <input
-                            type="password"
+                            type="number"
                             id="form3Example4c"
                             className="form-control"
+                            onChange={(e) => setPone(e.target.value)}
                           />
                           <label
                             className="form-label"
                             htmlFor="form3Example4c"
                           >
-                            Password
+                            Phone number
                           </label>
                         </div>
                       </div>
@@ -84,16 +132,25 @@ const SignUp = () => {
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-key fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0">
-                          <input
-                            type="password"
-                            id="form3Example4cd"
-                            className="form-control"
-                          />
+                          <select
+                            className="form-select"
+                            aria-label="Default select example"
+                            selected
+                            onChange={(e) => {
+                              setRole(e.target.value);
+                            }}
+                          >
+                            <option value>Open this select menu</option>
+                            <option value="analyse">Agent Analyse</option>
+                            <option value="facture">Agent Facture</option>
+                            <option value="reception">Agent Reception</option>
+                            <option value="fournisseur">Fournisseur</option>
+                          </select>
                           <label
                             className="form-label"
                             htmlFor="form3Example4cd"
                           >
-                            Repeat your password
+                            Select Role
                           </label>
                         </div>
                       </div>
@@ -112,8 +169,9 @@ const SignUp = () => {
                         <button
                           type="button"
                           className="btn btn-primary btn-lg"
+                          onClick={() => addUser()}
                         >
-                          Register
+                          Add User
                         </button>
                       </div>
                     </form>
@@ -135,4 +193,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default AddUser;

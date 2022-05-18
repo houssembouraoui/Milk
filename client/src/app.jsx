@@ -5,10 +5,10 @@ import AdminAuth from "./components/AdminAuth.jsx";
 import Home from "./components/home.jsx";
 import LogIn from "./components/login.jsx";
 import NavBar from "./layouts/navBar.jsx";
-import SignUp from "./components/signUp.jsx";
+import AddUser from "./components/addUser.jsx";
 import axios from "axios";
 import AdminPage from "./components/adminPage.jsx";
-import AdminNav from "./components/adminNav.jsx";
+import AdminNav from "./layouts/adminNav.jsx";
 
 const App = () => {
   let [view, setView] = useState("home");
@@ -19,18 +19,20 @@ const App = () => {
 
   return (
     <>
-      {view !== "admin page" ? (
-        <NavBar changeView={changeView} />
+      {view.includes("admin") ? (
+        <AdminNav view={view} changeView={changeView} />
       ) : (
-        <AdminNav />
+        <NavBar view={view} changeView={changeView} />
       )}
       {view === "home" && <Home />}
       {view === "login" && <LogIn />}
       {view === "adminLogIn" && (
         <AdminAuth changeView={changeView} view={view} />
       )}
-      {view === "userSignIn" && <SignUp />}
-      {view === "admin page" && <AdminPage />}
+      {view === "admin add" && <AddUser />}
+      {view === "admin page" && (
+        <AdminPage changeView={changeView} view={view} />
+      )}
 
       <Footer changeView={changeView} />
     </>

@@ -6,18 +6,13 @@ function AdminNav(props) {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid justify-content-between">
           <div className="d-flex">
-            <a
+            <p
               className="navbar-brand me-2 mb-1 d-flex align-items-center"
               href="#"
+              onClick={() => props.changeView("admin add")}
             >
-              <img
-                src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-                height="20"
-                alt="MDB Logo"
-                loading="lazy"
-                // style="margin-top: 2px;"
-              />
-            </a>
+              add user
+            </p>
 
             <form className="input-group w-auto my-auto d-none d-sm-flex">
               <input
@@ -25,7 +20,7 @@ function AdminNav(props) {
                 type="search"
                 className="form-control rounded"
                 placeholder="Search"
-                style={{ "min-width": "125px" }}
+                style={{ minWidth: "125px" }}
               />
               <span className="input-group-text border-0 d-none d-lg-flex"></span>
             </form>

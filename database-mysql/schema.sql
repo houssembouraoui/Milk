@@ -2,7 +2,7 @@ DROP DATABASE milk;
 CREATE DATABASE milk;
 
 USE milk;
-CREATE TABLE users (
+CREATE TABLE fournisseur (
     id int NOT NULL AUTO_INCREMENT,
     firstname varchar(350) NOT NULL,
     lastname varchar(350) NOT NULL,
@@ -10,7 +10,43 @@ CREATE TABLE users (
     phonenumber int NOT NULL,
     adress varchar(350) NOT NULL,
     image varchar(350) NOT NULL,
-    password varchar(350) NOT NULL,
+    password varchar(350) DEFAULT '123456789',
+    PRIMARY KEY (ID)
+);	
+
+CREATE TABLE reception (
+    id int NOT NULL AUTO_INCREMENT,
+    firstname varchar(350) NOT NULL,
+    lastname varchar(350) NOT NULL,
+    email varchar(350) NOT NULL,
+    phonenumber int NOT NULL,
+    adress varchar(350) NOT NULL,
+    image varchar(350) NOT NULL,
+    password varchar(350) DEFAULT '123456789',
+    PRIMARY KEY (ID)
+);	
+
+CREATE TABLE analyse (
+    id int NOT NULL AUTO_INCREMENT,
+    firstname varchar(350) NOT NULL,
+    lastname varchar(350) NOT NULL,
+    email varchar(350) NOT NULL,
+    phonenumber int NOT NULL,
+    adress varchar(350) NOT NULL,
+    image varchar(350) NOT NULL,
+    password varchar(350) DEFAULT '123456789',
+    PRIMARY KEY (ID)
+);
+
+CREATE TABLE facture (
+    id int NOT NULL AUTO_INCREMENT,
+    firstname varchar(350) NOT NULL,
+    lastname varchar(350) NOT NULL,
+    email varchar(350) NOT NULL,
+    phonenumber int NOT NULL,
+    adress varchar(350) NOT NULL,
+    image varchar(350) NOT NULL,
+    password varchar(350) DEFAULT '123456789',
     PRIMARY KEY (ID)
 );	
 
