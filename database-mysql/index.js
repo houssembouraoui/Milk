@@ -1,4 +1,5 @@
 const { Promise } = require("bluebird");
+const { append } = require("express/lib/response");
 const mysql = require("mysql");
 
 var connection = mysql.createConnection({
@@ -36,7 +37,7 @@ let addAdmin = () => {
 };
 
 let createUser = (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   return db
     .queryAsync(
       `INSERT INTO ${req.body.role} (firstname, lastname, email, image, phonenumber, adress) VALUES ('${req.body.name}', '${req.body.last}', '${req.body.email}', '${req.body.photo}', ${req.body.phone}, '${req.body.adress}')`
@@ -45,4 +46,17 @@ let createUser = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-module.exports = { connection, adminLogIn, createUser, addAdmin };
+let userLogIn = (req, res) => {
+  console.log(req.query, "request here");
+  return db
+    .queryAsync(
+      `SELECT * FROM ${req.query.role} WHERE email = '${req.query.email}'`
+    )
+    .then((response) => {
+      console.log(response[0], "response from the database");
+      return response[0];
+    });
+};
+
+
+module.exports = { connection, adminLogIn, createUser, addAdmin, userLogIn };

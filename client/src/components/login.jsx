@@ -1,6 +1,36 @@
-import React from "react";
+import axios from "axios";
+import { use } from "express/lib/router";
+import React, { useState } from "react";
 
 const LogIn = (props) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [currentUser, setCurrentUser] = useState("");
+  const [role, setRole] = useState("");
+  const [pass, setPass] = useState(true);
+  let getData = (role) => {
+    setRole(role);
+    axios
+      .get("http://localhost:5000/user/login", {
+        params: { email, password, role },
+      })
+      .then((result) => {
+        console.log(result.data, "fetched");
+        // console.log(role, "el rolo ");
+
+        setCurrentUser(result.data);
+        console.log("el currento utilisatoré ", currentUser);
+      });
+  };
+  let login = () => {
+    if (currentUser.email === email && currentUser.password === password) {
+      props.changeView(role);
+      console.log("sucess");
+    } else {
+      setPass(false);
+    }
+  };
+
   return (
     <div className="create">
       <section className="vh-100">
@@ -25,6 +55,7 @@ const LogIn = (props) => {
                     id="form3Example3"
                     className="form-control form-control-lg"
                     placeholder="Enter a valid email address"
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                   <label className="form-label" htmlFor="form3Example3">
                     Email address
@@ -37,11 +68,28 @@ const LogIn = (props) => {
                     id="form3Example4"
                     className="form-control form-control-lg"
                     placeholder="Enter password"
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                   <label className="form-label" htmlFor="form3Example4">
                     Password
                   </label>
                 </div>
+                <div className="form-outline mb-3">
+                  <select
+                    className="form-select form-select-lg mb-3"
+                    aria-label=".form-select-lg example"
+                    onChange={(e) => {
+                      getData(e.target.value);
+                    }}
+                  >
+                    <option value>Open this select menu</option>
+                    <option value="analyse">Agent Analyse</option>
+                    <option value="facture">Agent Facture</option>
+                    <option value="reception">Agent Reception</option>
+                    <option value="fournisseur">Fournisseur</option>
+                  </select>
+                </div>
+                {!pass && <p>wrong authentication</p>}
 
                 <div className="d-flex justify-content-between align-items-center">
                   <div className="form-check mb-0">
@@ -65,6 +113,7 @@ const LogIn = (props) => {
                     type="button"
                     className="btn btn-primary btn-lg"
                     // style="padding-left: 2.5rem; padding-right: 2.5rem;"
+                    onClick={() => login()}
                   >
                     Login
                   </button>

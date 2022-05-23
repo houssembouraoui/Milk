@@ -29,13 +29,6 @@ function NavBar(props) {
               >
                 Login
               </button>
-              <button
-                type="button"
-                className="btn btn-primary me-3"
-                onClick={() => props.changeView("userSignIn")}
-              >
-                Sign up for free
-              </button>
             </div>
           </div>
         </div>

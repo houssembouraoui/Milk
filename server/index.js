@@ -18,6 +18,20 @@ app.get("/admin/login", (request, response) => {
   });
 });
 
+app.get("/user/login", (req, res) => {
+  // let recieved = req.query;
+  connection.userLogIn(req, res).then((result) => {
+    let data = Object.values(JSON.parse(JSON.stringify(result)));
+    res.send(data[0]);
+    console.log(data[0], "something");
+  });
+
+  // connection
+  //   .userLogIn(req, res)
+  //   .then((result) => console.log(result))
+  //   .catch((error) => console.log(error));
+});
+
 app.post("/new/user", (req, res) => {
   connection
     .createUser(req, res)
@@ -25,7 +39,7 @@ app.post("/new/user", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-app.post("add/admin", (req, res) => {
+app.post("/add/admin", (req, res) => {
   connection
     .addAdmin()
     .then((res) => console.log(res))

@@ -9,6 +9,7 @@ import AddUser from "./components/addUser.jsx";
 import axios from "axios";
 import AdminPage from "./components/adminPage.jsx";
 import AdminNav from "./layouts/adminNav.jsx";
+import Analyse from "./components/analyse.jsx";
 
 const App = () => {
   let [view, setView] = useState("home");
@@ -25,7 +26,7 @@ const App = () => {
         <NavBar view={view} changeView={changeView} />
       )}
       {view === "home" && <Home />}
-      {view === "login" && <LogIn />}
+      {view === "login" && <LogIn changeView={changeView} />}
       {view === "adminLogIn" && (
         <AdminAuth changeView={changeView} view={view} />
       )}
@@ -33,6 +34,8 @@ const App = () => {
       {view === "admin page" && (
         <AdminPage changeView={changeView} view={view} />
       )}
+
+      {view === "analyse" && <Analyse />}
 
       <Footer changeView={changeView} />
     </>
