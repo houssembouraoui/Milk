@@ -4,6 +4,17 @@ const port = 5000;
 const path = require("path");
 var connection = require("../database-mysql/index.js");
 const { adminLogIn } = require("../database-mysql/index.js");
+const crypto = require("crypto");
+
+const nodemailer = require("nodemailer");
+
+let mailTransporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "deliceproject6@gmail.com",
+    pass: "qifnirqlwejafkwz",
+  },
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -33,17 +44,42 @@ app.get("/user/login", (req, res) => {
 });
 
 app.post("/new/user", (req, res) => {
+  let password = crypto.randomBytes(20).toString("hex");
+  let details = {
+    from: "'delice' deliceproject6@gmail.com",
+    to: req.body.email,
+    subject: "account created",
+    text: `welcome to our app
+    your default password is ${password}`,
+  };
+
+  console.log(req.body);
   connection
     .createUser(req, res)
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+    .then((result) => {
+      mailTransporter.sendMail(details, (err) => {
+        console.log("trynig 3alla9al");
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(success);
+        }
+      });
+    })
+    .catch((err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("suxessfully send brabi");
+      }
+    });
 });
 
 app.post("/add/admin", (req, res) => {
   connection
     .addAdmin()
     .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+    .catch((err) => console.log("el fail"));
 });
 
 app.listen(port, () => {

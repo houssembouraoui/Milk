@@ -1,7 +1,6 @@
 import axios from "axios";
 import emailjs, { EmailJSResponseStatus } from "emailjs-com";
 import React, { useEffect, useState } from "react";
-
 const AddUser = (props) => {
   const [name, setName] = useState("");
   const [last, setLast] = useState("");
@@ -13,15 +12,19 @@ const AddUser = (props) => {
 
   let addUser = () => {
     console.log({ name, email, photo, phone, role });
-    axios.post("http://localhost:5000/new/user", {
-      name,
-      last,
-      email,
-      photo,
-      phone,
-      role,
-      adress: "adress",
-    });
+    axios
+      .post("http://localhost:5000/new/user", {
+        name,
+        last,
+        email,
+        photo,
+        phone,
+        role,
+        adress: "adress",
+      })
+      .then((response) => {
+        console.log(response);
+      });
   };
 
   return (
