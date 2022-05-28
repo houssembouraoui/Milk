@@ -36,11 +36,11 @@ let addAdmin = () => {
     .catch((err) => console.log(err));
 };
 
-let createUser = (req, res) => {
+let createUser = (req, pass) => {
   // console.log(req.body);
   return db
     .queryAsync(
-      `INSERT INTO ${req.body.role} (firstname, lastname, email, image, phonenumber, adress) VALUES ('${req.body.name}', '${req.body.last}', '${req.body.email}', '${req.body.photo}', ${req.body.phone}, '${req.body.adress}')`
+      `INSERT INTO ${req.body.role} (firstname, lastname, email, image, phonenumber, adress, password) VALUES ('${req.body.name}', '${req.body.last}', '${req.body.email}', '${req.body.photo}', ${req.body.phone}, '${req.body.adress}', '${pass}')`
     )
     .then((res) => console.log(res, "user created"))
     .catch((err) => console.log(err));
@@ -57,6 +57,5 @@ let userLogIn = (req, res) => {
       return response[0];
     });
 };
-
 
 module.exports = { connection, adminLogIn, createUser, addAdmin, userLogIn };

@@ -10,7 +10,7 @@ CREATE TABLE fournisseur (
     phonenumber int NOT NULL,
     adress varchar(350) NOT NULL,
     image varchar(350) NOT NULL,
-    password varchar(350) DEFAULT '123456789',
+    password varchar(350) NOT NULL,
     PRIMARY KEY (ID)
 );	
 
@@ -22,7 +22,7 @@ CREATE TABLE reception (
     phonenumber int NOT NULL,
     adress varchar(350) NOT NULL,
     image varchar(350) NOT NULL,
-    password varchar(350) DEFAULT '123456789',
+    password varchar(350) NOT NULL,
     PRIMARY KEY (ID)
 );	
 
@@ -34,7 +34,7 @@ CREATE TABLE analyse (
     phonenumber int NOT NULL,
     adress varchar(350) NOT NULL,
     image varchar(350) NOT NULL,
-    password varchar(350) DEFAULT '123456789',
+    password varchar(350) NOT NULL,
     PRIMARY KEY (ID)
 );
 
@@ -46,7 +46,7 @@ CREATE TABLE facture (
     phonenumber int NOT NULL,
     adress varchar(350) NOT NULL,
     image varchar(350) NOT NULL,
-    password varchar(350) DEFAULT '123456789',
+    password varchar(350) NOT NULL,
     PRIMARY KEY (ID)
 );	
 

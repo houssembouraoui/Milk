@@ -2,9 +2,10 @@ const express = require("express");
 const app = express();
 const port = 5000;
 const path = require("path");
+const crypto = require("crypto");
+
 var connection = require("../database-mysql/index.js");
 const { adminLogIn } = require("../database-mysql/index.js");
-const crypto = require("crypto");
 
 const nodemailer = require("nodemailer");
 
@@ -55,10 +56,9 @@ app.post("/new/user", (req, res) => {
 
   console.log(req.body);
   connection
-    .createUser(req, res)
+    .createUser(req, password)
     .then((result) => {
       mailTransporter.sendMail(details, (err) => {
-        console.log("trynig 3alla9al");
         if (err) {
           console.log(err);
         } else {
@@ -70,7 +70,6 @@ app.post("/new/user", (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        console.log("suxessfully send brabi");
       }
     });
 });
